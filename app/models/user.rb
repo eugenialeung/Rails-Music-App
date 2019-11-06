@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
     after_initialize :ensure_session_token
 
+    has_many :notes
+
     def generate_unique_session_token
         token = SecureRandom.urlsafe_base64(16)
         # if there is a session_token conlflict, don't throw validation error at user
